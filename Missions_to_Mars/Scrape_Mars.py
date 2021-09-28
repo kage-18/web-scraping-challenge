@@ -104,3 +104,25 @@ def scrape():
     browser.quit()
     return mars_data
 
+mars_datas = scrape()
+
+class Main:
+    Mars_title = mars_datas['Mars_title'],
+    Mars_paragraph =  mars_datas['Mars_paragraph'],
+    Mars_featured_image =  mars_datas['Mars_featured_image'],
+    Mars_fact =  mars_datas['Mars_fact'],
+    Mars_hemisphere_1 =  mars_datas['Mars_hemispheres'][0]['img_url']
+    Mars_hemisphere_2 =  mars_datas['Mars_hemispheres'][1]['img_url']
+    Mars_hemisphere_3 =  mars_datas['Mars_hemispheres'][2]['img_url']
+    Mars_hemisphere_4 =  mars_datas['Mars_hemispheres'][3]['img_url']
+    Mars_hemisphere_title_1 =  mars_datas['Mars_hemispheres'][0]['title']
+    Mars_hemisphere_title_2 =  mars_datas['Mars_hemispheres'][1]['title']
+    Mars_hemisphere_title_3 =  mars_datas['Mars_hemispheres'][2]['title']
+    Mars_hemisphere_title_4 =  mars_datas['Mars_hemispheres'][3]['title']
+
+# Read the HTML file
+HTML_File=open('./templates/index.html','r')
+s = HTML_File.read().format(p=Main())
+index = open('./templates/index.html','w')
+index.write(s)
+index.close()
